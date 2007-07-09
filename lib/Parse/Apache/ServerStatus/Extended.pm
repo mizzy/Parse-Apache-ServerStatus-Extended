@@ -22,7 +22,7 @@ sub parse {
     };
 
     my @scraped;
-    for ( @{ $rows->scrape($content)->{rows} } ) {
+    for ( @{ $table->scrape($content)->{rows} } ) {
         next unless $_->{values};
         my $stat = $_->{values};
         push @scraped, {
