@@ -52,7 +52,7 @@ __END__
 
 =head1 NAME
 
-Parse::Apache::ServerStatus::Extended - Simple module to parse apache's server extended status.
+Parse::Apache::ServerStatus::Extended - Simple module to parse apache's extended server-status.
 
 
 =head1 SYNOPSIS
@@ -78,14 +78,14 @@ Parse::Apache::ServerStatus::Extended - Simple module to parse apache's server e
 
 =head1 DESCRIPTION
 
-This module parses the content of apache's server extended status.It works nicely with
+This module parses the content of apache's extended server-status.It works nicely with
 apache versions 1.3 and 2.x.
 
 =head1 METHODS
 
 =head2 new()
 
-Call C<new()> to create a new Parse::Apache::ServerStatus object.
+Call C<new()> to create a new Parse::Apache::ServerStatus::Extended object.
 
 =head2 request()
 
@@ -95,7 +95,7 @@ it is not set.
 
 =head2 parse()
 
-Call C<parse()> to parse the server status. This method returns an array reference with
+Call C<parse()> to parse the extended server status. This method returns an array reference with
 the parsed content.
 
 It's possible to call C<parse()> with the content as argument.
