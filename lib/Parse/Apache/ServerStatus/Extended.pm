@@ -2,11 +2,11 @@ package Parse::Apache::ServerStatus::Extended;
 
 use warnings;
 use strict;
-use Carp;
 use Web::Scraper;
 use base qw( Parse::Apache::ServerStatus );
 
 our $VERSION = '0.01';
+use 5.8.1;
 
 sub parse {
     my $self   = shift;
@@ -64,13 +64,13 @@ Parse::Apache::ServerStatus::Extended - Simple module to parse apache's server e
     $parser->request(
        url     => 'http://localhost/server-status',
        timeout => 30
-    ) or die $prs->errstr;
+    ) or die $parser->errstr;
 
     my $stat = $parser->parse or die $parser->errstr;
 
     # or both in one step
 
-    my $stat = $parser->get(
+    my $stats = $parser->get(
        url     => 'http://localhost/server-status',
        timeout => 30
     ) or die $parser->errstr;
@@ -121,7 +121,7 @@ Gosuke Miyashita  C<< <gosukenator at gmail.com> >>
 
 =head1 LICENCE AND COPYRIGHT
 
-Copyright (c) 2007, Gosuke Miyashita C<< <gosukenator@gmail.com> >>. All rights reserved.
+Copyright (c) 2007, Gosuke Miyashita C<< <gosukenator@gmail.com> >>.
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself. See L<perlartistic>.
