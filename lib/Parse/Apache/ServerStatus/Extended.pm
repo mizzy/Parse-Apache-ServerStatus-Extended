@@ -9,7 +9,7 @@ our $VERSION = '0.01';
 use 5.8.1;
 
 sub parse {
-    my $self   = shift;
+    my $self    = shift;
     my $content = $_[0] ? shift : $self->{content};
     $self->_raise_error('no content received') unless $content;
 
