@@ -14,20 +14,18 @@ sub parse {
     $self->_raise_error('no content received') unless $content;
 
     my $table = scraper {
-        process 'td',
-            'values[]' => 'TEXT';
-    };
-
-    my $rows = scraper {
         process 'table[border="0"] tr',
-            'rows[]' => $table;
+            'rows[]' => scraper {
+                process 'td',
+                    'values[]' => 'TEXT';
+            }
     };
 
-    my $scraped = [];
+    my @scraped;
     for ( @{ $rows->scrape($content)->{rows} } ) {
         next unless $_->{values};
         my $stat = $_->{values};
-        push @$scraped, {
+        push @scraped, {
             srv     => $stat->[0],
             pid     => $stat->[1],
             acc     => $stat->[2],
@@ -44,7 +42,7 @@ sub parse {
         };
     }
 
-    return $scraped;
+    return \@scraped;
 }
 
 1;
