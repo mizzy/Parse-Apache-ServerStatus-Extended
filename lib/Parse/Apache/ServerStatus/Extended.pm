@@ -11,7 +11,7 @@ use 5.8.1;
 sub parse {
     my $self    = shift;
     my $content = $_[0] ? shift : $self->{content};
-    $self->_raise_error('no content received') unless $content;
+    return $self->_raise_error('no content received') unless $content;
 
     my $table = scraper {
         process 'table[border="0"] tr',
@@ -87,7 +87,7 @@ Call C<new()> to create a new Parse::Apache::ServerStatus::Extended object.
 
 =head2 request()
 
-This method excepts one or two arguments: C<url> and C<timeout>. It requests the url
+This method accepts one or two arguments: C<url> and C<timeout>. It requests the url
 and safes the content into the object. The option C<timeout> is set to 180 seconds if
 it is not set.
 
@@ -96,7 +96,7 @@ it is not set.
 Call C<parse()> to parse the extended server status. This method returns an array reference with
 the parsed content.
 
-It's possible to call C<parse()> with the content as argument.
+It's possible to call C<parse()> with the content as an argument.
 
     my $stat = $prs->parse($content);
 
@@ -105,7 +105,7 @@ stored by C<request()>.
 
 =head2 get()
 
-Call C<get()> to C<request()> and C<parse()> in one step. It except the same options like
+Call C<get()> to C<request()> and C<parse()> in one step. It accepts the same options like
 C<request()> and returns the array reference that is returned by C<parse()>.
 
 =head1 SEE ALSO
