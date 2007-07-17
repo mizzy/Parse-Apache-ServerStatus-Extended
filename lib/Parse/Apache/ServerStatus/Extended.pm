@@ -5,7 +5,7 @@ use strict;
 use Web::Scraper;
 use base qw( Parse::Apache::ServerStatus );
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 use 5.8.1;
 
 sub parse {
